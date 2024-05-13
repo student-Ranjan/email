@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="text-center fs-1 mt-2 fw-bold ">Login<b class="text-primary">
+    <i class="fa-solid fa-key"></i></b></div>
+<div class="row border-secondary ">
+    <div class="col-sm-6 mb-5">
+        <img src="{% static 'images/ma1.jpg' %}" style="height:700px;width:700px; margin-left:10%; margin-buttom:35%;"/>
+    </div>
+    <div class="col-sm-6 ">
+        <div class="row mt-5 me-5">
+            <p class="fs-3 text-center fw-bold text-danger ">Google</p>
+            <h3 class="fs-2 fw-bold text-center"><u>Sign i</u>n to your Gmail</h3>
+            <p class="text-center fs-5">to continue</p>
+            <div class="col-sm-12 mt-3">
+                <form method="POST">
+                    {% csrf_token %}
+                 <p class="fs-4">Username :</p>
+                    <div class="input-group mb-2">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-at"></i>
+                        </i>
+                        <input required type="email" placeholder="Enter Your Username*" class="form-control" name="email" style="height:60px;"/>
+                    </div>
+                 <p class="fs-4">Password :</p>
+                    <div class="input-group mb-2">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-lock-open"></i>
+                        </i>
+                        <input required type="password" placeholder="Enter Your password*" class="form-control" name="password" style="height:60px;"/>
+                    </div>
+                <a href="/user/forgetpasswd" style="text-decoration:none;color:blue;font-weight:bold;">forget email and password?</a>
+                <div class="input-group mb-5">
+                        <input type="submit" value="Sign In"
+                               class=" text-primary border-2 border-primary mt-3 fs-3 x1"/>
+                    </div>
+                        <p class="text-center">Not your computer? Use Guest mode to sign in privately.<a href="#" style="text-decoration:none;color:blue;font-weight:bold;">Learn more</a></p><br/>
+                    <a href="/user/signup" style="text-decoration:none;color:blue;font-weight:bold;">Create account</a><a href="/user/mail"><input type="button" value="Next" name="next" class="bg-primary lg"/></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
