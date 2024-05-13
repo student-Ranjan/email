@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="row" style="background-image:url({% static 'images/ball.webp' %});background-size:cover;min-height:700px;">
+    <div class="col-sm-2">
+        <img src="{% static 'images/sm3.jpeg' %}" style="height:120px;width:230px;margin-top:3%;"/>
+        <!--start card-->
+        <div class="card  mt-3 rounded-0" style="width: 15rem; border:none; border-right:1px solid grey; border-buttom:none; ">
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item  mt-4 mb-2 ut"><a href="#" style="text-decoration:none;"><i class="fa-solid fa-pencil text-secondary"></i><b class="ps-3 text-dark f">Compose mail</b></a></li>
+
+    <li class="list-group-item  mt-5 mb-2 h"><a href="/user/mail" style="text-decoration:none;width:180px;" ><i class="fa-solid fa-envelope text-danger"></i><b class="ps-3 text-dark">Inbox
+
+    </b></a></li>
+    <li class="list-group-item mt-5 mb-2 ut"><a href="/user/favourite" style="text-decoration:none;"><i class="fa-solid fa-star text-warning"></i><b class="ps-3 text-dark">Favourite mail</b></a></li>
+    <li class="list-group-item mt-5 mb-2 ut"><a href="/user/bin" style="text-decoration:none;"><i class="fa-solid fa-trash text-success"></i><b class="ps-3 text-dark">Bin</b></a></li>
+    <li class="list-group-item mb-5 mt-5 ut"><a href="/user/sent" style="text-decoration:none;"><i class="fa-brands fa-telegram text-primary"></i><b class="ps-3 text-dark">Sent mail</b></a></li>
+  </ul>
+</div>
+    </div>
+    <div class="col-sm-10">
+        <div class="row">
+            <!--start searchbar-->
+            <nav class="navbar ">
+  <div class="container ">
+    <form class="d-flex w-75" role="search" method="get">
+      <input class="form-control me-2 w-100 " name="searchkey" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+      <a href="#" class="fs-4 text-dark" style="margin-left:13%;" title="settings"><i class="fa-solid fa-gear"></i></a>
+      <a href="/user/deletemail?mid={{request.GET.mid}}&type={{request.GET.type}}" class="fs-4 me-2 text-success"><i class="fa-solid fa-trash" title="Delete from here"></i></a>
+      <img src="/{{request.session.pic}}" height="30px" width="30px" style="border-radius:50%;" title="Your profile" class="me-2"/>
+      <a href="#" class="fs-4 text-dark" title="All google apps"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+  </div>
+</nav>
+            <!--end bar-->
+
+    </div>
+
+        <table class="table ">
+            <thead>
+
+
+    <tr>
+
+      <td>
+          <a href="/user/mail" class="f text-primary fs-4 me-4" ><i class="fa-sharp fa-solid fa-arrow-left"></i></a>
+          <!---dropdown-->
+
+  <button class="btn btn-primary dropdown-toggle me-4" type="button" title="select" data-bs-toggle="dropdown" aria-expanded="false">
+
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">All</a></li>
+    <li><a class="dropdown-item" href="#">None</a></li>
+    <li><a class="dropdown-item" href="#">Read</a></li>
+    <li><a class="dropdown-item" href="#">Unead</a></li>
+    <li><a class="dropdown-item" href="#">Starred</a></li>
+    <li><a class="dropdown-item" href="#">Unstarred</a></li>
+  </ul>
+
+          <!--end-->
+
+          <a href="/user/favourite" title="Refresh"><i class="fa-solid fa-rotate-right fs-5 me-4"></i></a>
+             <a href="#" title="more "><i class="fa-solid fa-ellipsis fs-5"></i></a><br/>
+
+      </td>
+            <tr/>
+            <tr>
+      <th scope="col" width="20%"><a href="#" class="f text-dark" title="Person-to-person conversations and messages that don't appear in other tabs">NAME</a></th>
+      <th scope="col" width="70%"><a href="#" class="f text-dark" title="interesting,other social websites and all professional emails">Title</a></th>
+      <th scope="col" width="10%"><a href="#" class="f text-dark" title="current time">Time</a></th>
+    </tr>
+
+</thead>
+            </tbody>
+            {% for box in inbox %}
+     <tr>
+      <th scope="row" width="20%">
+          <input type="checkbox" class="me-3" title="select"/>
+          {% if box.isstar == 'True' %}
+          <a href="/user/favourite?mid={{box.id}}" class="f text-dark" title="Not starred"><i class="fa-solid fa-star"></i></a>
+          {% else %}
+          <a href="/user/favourite?mid={{box.id}}" class="f text-dark" title="Not starred"><i class="fa-regular fa-star"></i></a>
+          {% endif %}
+          <a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgfrom}}</a>
+      </th>
+      <td width="70%">
+          <span class="fw-bold"><a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgtitle}}</a></span>
+          <span style="font-size:12px;"><a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgdesc}}</a></span>
+      </td>
+      <td width="10%"><a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgtime}}</a></td>
+    </tr>
+            {% endfor %}
+            </tbody>
+</table>
+        <div class="row">
+    <div class="col-sm-12">
+        <span class="fw-bold mb-4 fs-5"></span><br/><br/>
+        <span style="font-size:16px">
+
+        </span>
+    </div>
+    </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}
