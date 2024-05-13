@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="row">
+<div class=" col-sm-12 text-center fs-1 fw-bold bg-warning">Sign <b class="text-primary">Up
+    <i class="fa-solid fa-user-plus"></i></b></div>
+</div>
+<div class="row bg-warning">
+    <div class="col-sm-6">
+</div>
+    <div class="col-sm-6 ps-5 pt-5  rounded-3 mb-5 h" style="margin-left:32%; margin-right:30%; width:600px; padding-right:3%;">
+        {% if status %}
+        <div class="alert alert-success">Your are register successfully</div>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            <h2 class="mb-3">Register now!..</h2>
+      <p>Your Name :</p>
+                    <div class="input-group mb-2 w-100 ">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-user"></i>
+                        </i>
+                        <input required type="text" placeholder="Enter Your Name*" class="form-control" name="name" style="height:50px;"/>
+                    </div>
+                    <p>Your Username/Email :</p>
+                    <div class="input-group mb-2 w-100">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-at"></i>
+                        </i>
+                        <input required type="email" placeholder="Enter Your E-mail*" class="form-control" name="email" style="height:50px;"/>
+                    </div>
+                    <p>Your Password :</p>
+                    <div class="input-group mb-2 w-100">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-key"></i>
+                        </i>
+                        <input required type="password" placeholder="Enter Your Password*" class="form-control" name="passwd" style="height:50px;"/>
+                    </div>
+                        <p>Your Address :</p>
+                    <div class="input-group mb-2 w-100">
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </i>
+                        <textarea  required class="form-control" name="address"  placeholder="Enter Your Address*" style="height:100px;"></textarea>
+                    </div>
+         <p>Profile Picture :</p>
+                    <div class="input-group mb-2 w-75">
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-file"></i>
+                        </i>
+                        <input required type="file" class="form-control" name="ppic"/>
+                    </div>
+                    <div class="input-group mt-3 w-25 ">
+                        <input type="submit" value="Register"
+                               class="form-control text-primary border-primary mt-3 fs-5 mb-3 x1" />
+                    </div>
+            <input type="checkbox" class=" me-2 mb-3"/><b class="text-warning ">Read the privacy and policy terms</b><br/>
+            <a href="#" style="text-decoration:none;color:blue;font-weight:bold;" class="mt-3">Create account</a><a href="/user/login"><input type="button" value="Next" name="next" class="bg-primary lg mb-5"/></a>
+
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock %}
