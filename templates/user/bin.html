@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+
+<div class="row" style="background-image:url({% static 'images/ball.webp' %});background-size:cover;min-height:700px;">
+
+    <div class="col-sm-2">
+        <img src="{% static 'images/box.webp' %}" style="height:80px;width:230px;margin-top:3%;"/>
+        <!--start card-->
+        <div class="card rounded-0" style="width: 15rem; border:none; border-right:1px solid grey; border-buttom:none; ">
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item  mt-4 mb-2 ut"><a href="#" style="text-decoration:none;"><i class="fa-solid fa-pencil text-secondary"></i><b class="ps-3 text-dark f" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Compose mail</b></a></li>
+
+    <li class="list-group-item  mt-5 mb-2 h"><a href="/user/mail" style="text-decoration:none;width:180px;"><i class="fa-solid fa-envelope text-danger"></i><b class="ps-3 text-dark">Inbox
+
+
+    </b></a></li>
+    <li class="list-group-item mt-5  mb-2 ut"><a href="/user/favourite" style="text-decoration:none;"><i class="fa-solid fa-star text-warning"></i><b class="ps-3 text-dark">Favourite mail</b></a></li>
+    <li class="list-group-item mt-5 mb-2 ut"><a href="/user/bin" style="text-decoration:none;"><i class="fa-solid fa-trash text-success"></i><b class="ps-3 text-dark">Bin</b></a></li>
+    <li class="list-group-item mb-5 mt-5 ut"><a href="/user/sent" style="text-decoration:none;"><i class="fa-brands fa-telegram text-primary"></i><b class="ps-3 text-dark">Sent mail</b></a></li>
+  </ul>
+</div>
+        <!--end card-->
+    </div>
+    <div class="col-sm-10">
+        <div class="row">
+            <!--start searchbar-->
+            <nav class="navbar ">
+  <div class="container">
+    <form class="d-flex w-75" role="search" method="get">
+      <input class="form-control me-2 w-100 " name="searchkey" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+      <a href="#" class="fs-4 text-dark" style="margin-left:13%;" title="settings"><i class="fa-solid fa-gear"></i></a>
+      <a href="/user/bin" class="fs-4 me-2 text-success" title="Delete"><i class="fa-solid fa-trash"></i></a>
+      <img src="/{{request.session.pic}}" height="30px" width="30px" style="border-radius:50%;" title="Your profile" class="me-2"/>
+      <a href="#" class="fs-4 text-dark" title="All google apps"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+  </div>
+</nav>
+            <!--end bar-->
+
+    </div>
+        {% if inbox %}
+        <table class="table table-hover">
+  <thead>
+    <tr>
+        <tr>
+      <td>
+
+            <button class="btn btn-dark dropdown-toggle me-4" type="button" title="select" data-bs-toggle="dropdown" aria-expanded="false" style="width:40px;">
+  </button>
+             <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">All</a></li>
+    <li><a class="dropdown-item" href="#">None</a></li>
+    <li><a class="dropdown-item" href="#">Read</a></li>
+    <li><a class="dropdown-item" href="#">Unead</a></li>
+    <li><a class="dropdown-item" href="#">Starred</a></li>
+    <li><a class="dropdown-item" href="#">Unstarred</a></li>
+  </ul>
+
+          <!--end-->
+
+          <a href="/user/mail" title="Refresh"><i class="fa-solid fa-rotate-right fs-5 me-4 text-dark"></i></a>
+             <a href="#" title="more"><i class="fa-solid fa-ellipsis fs-5 me-4 text-dark"></i></a><br/>
+      </td>
+  </tr>
+      <th scope="col" width="20%"><a href="#" class="f text-dark" title="Person-to-person conversations and messages that don't appear in other tabs">NAME</a></th>
+      <th scope="col" width="70%"><a href="#" class="f text-dark" title="interesting,other social websites and all professional emails">Title</a></th>
+      <th scope="col" width="10%"><a href="#" class="f text-dark" title="current time">Time</a></th>
+    </tr>
+  </thead>
+            </tbody>
+
+    {% for box in inbox %}
+     <tr>
+
+      <th scope="row" >
+          <a href="#"> <input type="checkbox" class="me-3" title="select"/></a>
+
+          <a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgfrom}}</a>
+      </th>
+      <td>
+          <span class="fw-bold"><a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgtitle}}</a></span>
+          <span style="font-size:12px;"><a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgdesc}}</a></span>
+      </td>
+      <td ><a href="/user/msgdetail?mid={{box.id}}&type=sender" style="text-decoration:none;color:black;">{{box.msgtime}}</a></td>
+    </tr>
+
+            {% endfor %}
+
+  </tbody>
+</table>
+        {% else %}
+        <h1 class="text-center mt-5"><i class="fa-solid fa-envelope-open-text me-4 fs-1 text-primary"></i>Hurry! All messages are deleted...</h1><br/><br/><br/>
+        <h1 class="text-center text-primary mt-5" style="font-style:impact;">Thankyou!</h1>
+        <img src="{% static 'images/thank.jpeg' %}" height="160px" width="240px" style="margin-left:40%;"/>
+        {% endif %}
+
+    </div>
+</div>
+<p class="text-center fs-5 mt-5 text-info" >Thankyou for join us..!</p>
+<!-- modal section -->
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Compose your mail</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Receiver Mail ID:</label>
+            <input type="text" class="form-control" name="recmail" id="recipient-name">
+          </div>
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" name="title" id="rec">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" name="message" id="message-text"></textarea>
+          </div>
+        <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Attachment:</label>
+            <input type="file" class="form-control"  name="mailfile" id="name">
+          </div>
+
+      </div>
+      <div class="modal-footer">
+
+        <input type="submit" class="btn btn-primary" value="Send Message"/>
+      </div>
+    </div></form>
+  </div>
+</div>
+{% endblock %}

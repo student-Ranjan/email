@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="text-center fs-1 mt-2 h">Image <b class="text-warning"> Gallery
+  <i class="fa-solid fa-camera"></i></b></div>
+<div class="row mt-2" style="background-image:url({% static 'images/bg.webp' %});background-size:cover;min-height:700px;">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <div class="row">
+        {% for x in data %}
+      <div class="col-sm-4">
+        <!--start card-->
+           <div class="card w-100">
+  <img src="/{{x.picture}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-center mb-2">{{x.gdes}}</h5>
+
+  </div>
+</div>
+        <!--end card-->
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+
+{% endblock %}

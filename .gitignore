@@ -1,0 +1,34 @@
+# Python bytecode
+*.py[cod]
+__pycache__/
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Environment / virtualenv
+.env
+venv/
+ENV/
+env/
+*.env
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Django migrations
+*/migrations/*.pyc
+*/migrations/__pycache__/

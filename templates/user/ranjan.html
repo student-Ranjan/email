@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ranjan Tiwari</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/all.css' %}" rel="stylesheet"/>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+<style>
+    body{
+    background:linear-gradient(45deg, yellow, orange, red,skyblue);
+    overflow-x:hidden;
+    }
+    .ps
+    {
+    text-shadow:10px 10px 15px purple, 10px -10px 15px red,-10px 10px 15px navy;
+    font-weight:bold;
+    color:orange;
+    font-size:60px;
+    margin-left:10%;
+    }
+    img
+    {
+    box-shadow:10px 10px 20px 5px blue inset,0px 0px 8px 4px black;
+    }
+    .last
+    {
+    margin-left:25%;
+    font-size:25px;
+    color:red;
+    text-shadow:10px 10px 15px maroon;
+    font-weight:bold;
+    }
+    .detail
+    {
+    margin-top:100%;
+    font-size:18px;
+    font-weight:bold;
+    }
+
+</style>
+</head>
+<body>
+<h1 class="text-center ps">Profile</h1>
+<nav class="row">
+    <nav class="col-sm-6">
+        <img src="{% static 'images/mypic.png' %}" width="160px" style="margin-left:5%; border-radius:3%;"/><hr/>
+    </nav>
+    <nav class="col-sm-6">
+      <p class="fs-2 text-dark text-center mt-5 fw-bold me-5">"The pain you feel today<br/>
+          will be the strength<br/>
+          you feel tomorrow"
+      </p>
+    </nav>
+</nav>
+        <nav class="row">
+            <nav class="col-sm-9">
+        <ul>
+            <h5 class="fs-3 ms-5 fw-bold"><u>About me</u></h5>
+            <li class="ms-5 mt-5">Hello everyone! I am <mark>Ranjan Tiwari</mark> from  <mark>Government Girsls Polytechnic, Gorakhpur</mark>.I am completed my 10th and 12th fron<mark>Woodland Acadcemy,Gorakhpur</mark>.</li>
+            <li class="ms-5 mt-3">Currently I am doing <mark>Diploma</mark> from IT sector by taking <mark> lateral entry</mark> in 2nd year of my college.</li>
+            <li class="ms-5 mt-3">And, In my 2nd year of my college I am coming Lucknow for <mark>Training</mark>  that is complusory for all CS and IT student .</li>
+            <li class="ms-5 mt-3">Through my training section , I learnt many language as like <mark>HTML, CSS, Database,Bootstrap...</mark></li>
+            <li class="ms-5 mt-3">Now best part is that we have to choose particular one language on which we work and my choice is <mark>Python with Django</mark>.</li>
+            <li class="ms-5 mt-3">Currently I am working on<mark><u>"My Mail"</u></mark>Project. I enjoy a lots to make this project...</li>
+            <li class="ms-5 mt-3">I am enjoy to complete task...</li>
+        </ul>
+            </nav>
+            <nav class="col-sm-3">
+                <p class="detail mb-3 text-dark">
+                    Ranjan tiwari<br/>
+                    Age : 18<br/>
+                    <a href="#" style="text-decoration:none;" class="text-dark">ranjantiwari@gmail.com</a><br/>
+                    <a href="tel:9876765678" style="text-decoration:none;">
+            <i class="fa-solid fa-phone"></i>
+            +91,6393908484</a>
+                </p>
+            </nav>
+                <hr/>
+                <p class="last mt-4">Thankyou so much for giving me your wonderful time..!</p>
+
+</nav>
+</body>
+</html>

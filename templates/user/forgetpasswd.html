@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="text-center fs-2 mt-2">Reset Your <b class="text-warning">Password
+    <i class="fa-solid fa-key"></i></b></div>
+<div class="row border-secondary ">
+
+    <div class="col-sm-6" style="margin-left:25%;">
+        <div class="row mt-5 me-5">
+            <span class="fs-3 text-center fw-bold text-danger">Google</span>
+            <h3 class="fs-2 text-center"><u>Re-gene</u>rate Your</h3>
+            <span class="text-center fs-5 text-info">Password</span>
+            <div class="col-sm-12 mt-3">
+                 {% if status %}
+        <div class="alert alert-success">You are reset your email and password successfully</div>
+        {% endif %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                 <p class="fs-4 fw-bold">Your Email:</p>
+                    <div class="input-group mb-2">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-at"></i>
+                        </i>
+                        <input required type="email" placeholder="Enter Your email*" class="form-control" name="email" style="height:60px;"/>
+                    </div>
+                 <p class="fs-4 fw-bold">Your Password :</p>
+                    <div class="input-group mb-2">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-lock-open"></i>
+                        </i>
+                        <input required type="password" placeholder="Enter Your password*" class="form-control" name="passwd" style="height:60px;"/>
+                    </div>
+
+                <div class="input-group mb-5">
+                        <input type="submit" value="Save"
+                               class=" text-primary border-2 border-primary mt-3 fs-3 x1"/>
+                    </div>
+
+                    <a href="/user/login"><input type="button" value="Next" name="next" class="bg-primary lg mb-3"/></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
