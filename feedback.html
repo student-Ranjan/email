@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="text-center fs-2 mt-2">Your Valuable <b class="text-warning"> Feedback
+     <i class="fa-solid fa-comment"></i></b>
+</div>
+<span style="margin-left:35%;">We appriciate to your valuable feedback and we always focused on it.</span>
+<div class="row border-secondary ">
+    <div class="col-sm-6 mb-5">
+        <img src="{% static 'images/hand.jpg' %}" class="feed"/>
+    </div>
+    <div class="col-sm-6 ">
+        <div class="row mt-4 me-5">
+           <p class="fs-3 mt-5 fw-bold">Add Your Feedback</p>
+            <div class="col-sm-12">
+                {% if status %}
+        <div class="alert alert-success">Your are register successfully</div>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+                    <div class="input-group mb-3 w-100 ">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-user"></i>
+                        </i>
+                        <input required type="text" placeholder="Name*" class="form-control" name="name" style="height:50px;"/>
+                    </div>
+                    <div class="input-group mb-3 w-100">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-at"></i>
+                        </i>
+                        <input required type="email" placeholder="E-mail*" class="form-control" name="email" style="height:50px;"/>
+                    </div>
+                    <div class="input-group mb-3 w-100">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </i>
+                        <input required type="text" placeholder="Location*" class="form-control" name="location" style="height:50px;"/>
+                    </div>
+                    <div class="input-group mb-3 w-100">
+                        <i class="input-group-text bg-primary text-white">
+                          <i class="fa-solid fa-comment"></i>
+                        </i>
+                        <textarea  required class="form-control" name="feedback"  placeholder="Your Feedback*" style="height:120px;"></textarea>
+                    </div>
+
+                    <div class="input-group mt-3 w-25 ">
+                        <input type="submit" value="Send Feedback"
+                               class="form-control text-primary border-primary mt-3 fs-5 mb-3 x1" />
+                    </div>
+
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

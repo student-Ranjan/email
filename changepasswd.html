@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="text-center fs-2 mt-2 ">Change Your <b class="text-warning">Password
+    <i class="fa-solid fa-key"></i></b></div>
+<div class="row border-secondary ">
+    <div class="col-sm-6 mb-5">
+        <img src="{% static 'images/killer.webp' %}" class="feed"/>
+    </div>
+    <div class="col-sm-6 ">
+        <div class="row mt-5 me-5">
+            <span class="fs-2 text-center fw-bold text-success ">Google</span>
+            <h3 class="fs-2 text-center"><u>Change</u> your <span class="text-center fs-2 text-info">Password</span></h3>
+
+            <div class="col-sm-12 mt-3">
+                {% if status %}
+        <div class="alert alert-success">Your password change successfully</div>
+        {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="input-group mb-4">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-at"></i>
+                        </i>
+                        <input required type="password" placeholder="Old Password*" class="form-control" name="opasswd" style="height:60px;"/>
+                    </div>
+
+                    <div class="input-group mb-4">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-lock-open"></i>
+                        </i>
+                        <input required type="password" placeholder="New Password*" class="form-control" name="npasswd" style="height:60px;"/>
+                    </div>
+
+                    <div class="input-group mb-3">
+
+                        <i class="input-group-text bg-primary text-white">
+                            <i class="fa-solid fa-lock-open"></i>
+                        </i>
+                        <input required type="password" placeholder="Confirm New Password*" class="form-control" name="npasswd" style="height:60px;"/>
+                    </div>
+                <div class="input-group mb-5">
+                        <input type="submit" value="Save"
+                               class=" text-primary border-2 border-primary mt-3 fs-3 x1"/>
+                    <a href="/user/login"><input type="button" value="Next" name="next" class="bg-primary lg mb-3 mt-5" style="margin-left:100%;"/></a>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block a %}
+<div class="row">
+<div class="col-sm-12 text-center fs-1 mt-2 m-0 h">Con<u>tact With </u><b class="text-mycolor">Us
+    <i class="fa-solid fa-location-dot"></i>
+</b>
+    <p class="text-center mb-0 fs-5"> You may contact us by contact number or filling in
+        this form any time you need professional<br/> support
+        or have any question<br/>
+    </p>
+</div>
+</div>
+<div class="row h">
+    <div class="col-sm-1">
+    </div>
+    <div class="row h">
+        <div class="row hp me-5 mb-5">
+            <div class="col-sm-5 mt-5 mb-5 ms-3">
+                <h3><u>Sen</u>d Your Message</h3>
+                {% if msg %}
+                <div class="alert alert-success">
+                    Your Data Saved Successfully...
+                </div>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <p class="mt-4">Your Name :</p>
+                    <div class="input-group mb-3">
+
+                        <i class="input-group-text bg-mycolor text-white">
+                            <i class="fa-solid fa-user"></i>
+                        </i>
+                        <input type="text" placeholder="Enter Your Name*" class="form-control" name="name"/>
+                    </div>
+                    <p>Your Contact :</p>
+                    <div class="input-group mb-3">
+
+                        <i class="input-group-text bg-mycolor text-white">
+                            <i class="fa-solid fa-phone"></i>
+                        </i>
+                        <input type="text" placeholder="Enter Your Contact Number*" class="form-control" name="mob"/>
+                    </div>
+                    <p>Your Email :</p>
+                    <div class="input-group mb-3">
+
+                        <i class="input-group-text bg-mycolor text-white">
+                            <i class="fa-solid fa-at"></i>
+                        </i>
+                        <input type="email" placeholder="Enter Your E-mail*" class="form-control" name="email"/>
+                    </div>
+                    <p>Your Message :</p>
+                    <div class="input-group mb-3">
+                        <i class="input-group-text bg-mycolor text-white">
+                            <i class="fa-solid fa-message"></i>
+                        </i>
+                        <textarea class="form-control" name="msg" style="height:100px;" placeholder="Type Your Message Here*"></textarea>
+                    </div>
+                    <div class="input-group mb-3 w-50">
+                        <input type="submit" value="SEND MESSAGE"
+                               class="form-control text-mycolor border-warning mt-3 fs-5 mb-5 x"/>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-sm-5 box mb-5 mt-5">
+
+                <h3 class="mt-4 mb-3"><u>Cont</u>act Info</h3>
+
+                <h4 class="text-mycolor ps-4"><i class="fa-solid fa-location-dot"></i> <u>Offic</u>e Address</h4>
+
+                <p class="ps-5 mb-3"> Plot nNo-44, Behind <br/>H.P petrol Pump,<br/>
+                    Tedhi Pulia Ring Rd,<br/> Sector 5,<br/>
+                    Vikas Nagar,<br/> Lucknow,<br/>
+                    Uttar Pradesh<br/> 226022</p>
+
+                <h4 class="text-mycolor ps-4"><i class="fa-solid fa-square-phone"></i> <u>Call U</u>s</h4>
+
+                <a href="tel:9876765678" class="f1"><p class="ps-5  text-dark f">+91 7007237006</p></a>
+                <a href="tel:9876765678" class="f1"><p class="ps-5 mb-3 text-dark f">+91 8052978684</p></a>
+
+                <h4 class="text-mycolor ps-4"><i class="fa-solid fa-envelope"></i> <u>Mail </u>Us</h4>
+
+                <a href="https://www.techpile.in" class="f1"><p class="ps-5 f text-dark">techpilelko@gmail.com</p></a>
+                <a href="#" class="f1"><p class="ps-5 mb-5 f text-dark">hr@techpile.in</p></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+    </div>
+
+        <h1 class="mt-3 fw-bold text-center mb-2">Find us on<u class="text-mycolor"> Googl</u>e Map</h1>
+        <p class="text-center mb-5">View us on google map easily</p>
+        <p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14232.646640223778!2d80.9663807!3d26.8983641!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xffa47f1efe103f0d!2sTechpile%20Technology%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1662008792578!5m2!1sen!2sin"
+                    width="1520" height="450px" style="border:0; margin-bottom:0px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </p>
+
+<div class="row bg-mycolor st">
+    <div class="col-sm-12 p-0">
+        <p class="fw-bold">Join us in any time and get many benefits...</p>
+        <div class="w-25 std fs-5"><a href="/user/signup/" class="f" title="Register here">ENROLL TODAY !!! <i class="fa-brands fa-telegram"></i></a>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+{% endblock %}
