@@ -1,6 +1,6 @@
 Django==5.1.1
 gunicorn==23.0.0
 whitenoise==6.5.0
-psycopg2-binary==2.9.9
+psycopg2-binary
 dj-database-url==2.0.0
 waitress==2.1.2
