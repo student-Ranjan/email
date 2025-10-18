@@ -84,9 +84,13 @@ WSGI_APPLICATION = 'Myproject.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'sqlite:///" + str(BASE_DIR / "db.sqlite3'))
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
