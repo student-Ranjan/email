@@ -25,10 +25,10 @@ TEMPLATE_DIR=BASE_DIR/'templates'
 SECRET_KEY = os.environ.get('SECRET_KEY', 'insecure-local-dev-key-do-not-use-in-prod')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('1', 'true', 'yes')
+DEBUG = True
 
-allowed = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1")
-ALLOWED_HOSTS = ['email-2-93jj.onrender.com', 'localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = ['*']
 
 
 
