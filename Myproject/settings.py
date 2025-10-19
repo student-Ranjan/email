@@ -85,13 +85,11 @@ WSGI_APPLICATION = 'Myproject.wsgi.application'
 # --- DATABASES: use DATABASE_URL on Render, otherwise use local sqlite ---
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
-if DATABASE_URL:
-    # Parse DATABASE_URL (Postgres on Render)
+if DATABASE_URL and DATABASE_URL.strip() != "":
     DATABASES = {
         "default": dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=False)
     }
 else:
-    # Local / fallback sqlite (works when DATABASE_URL is not provided)
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
