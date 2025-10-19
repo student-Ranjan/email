@@ -4,3 +4,4 @@ whitenoise==6.5.0
 psycopg2-binary
 dj-database-url==2.0.0
 waitress==2.1.2
+legacy-cgi
