@@ -1,7 +1,7 @@
-Django==3.2.25
-gunicorn==23.0.0
-whitenoise==6.5.0
-psycopg2-binary
 dj-database-url==2.0.0
+psycopg2-binary==2.9.9
+whitenoise==6.5.0
+gunicorn==23.0.0
+Django==3.2.25
 waitress==2.1.2
 legacy-cgi
